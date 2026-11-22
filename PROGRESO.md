@@ -21,6 +21,7 @@ Decisiones tomadas:
 - Base de datos: PostgreSQL para todos, por la vinculación interna de los datos y la escalabilidad.
 - Se trabajará de forma compartida entre varias herramientas de IA (chat de Claude, Gemini y opencode; Claude Code solo si hay plan de pago), usando estos archivos como contexto común.
 - **Todo gratuito:** ninguna herramienta ni servicio de pago. Base de datos en Neon Free; despliegue en Vercel Hobby y Render Free; Railway queda fuera del plan.
+- Monorepo: el repositorio es el portafolio y cada proyecto vive en proyecto/NN-nombre
 
 ## Decisiones pendientes
 
