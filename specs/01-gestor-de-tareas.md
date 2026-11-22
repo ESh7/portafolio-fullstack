@@ -43,19 +43,47 @@ Un usuario individual necesita registrar, consultar, actualizar y cerrar sus tar
 
 ## 2. Modelo de Datos
 - **`Tarea`**:
-  - `id`: `string` (UUID o identificador único autogenerado)
-  - `title`: `string` (requerido, `trim()`, longitud `1..120`)
-  - `description`: `string | null` (opcional, longitud máxima `500`)
-  - `status`: `"pending" | "completed"` (valor inicial: `"pending"`)
-  - `createdAt`: `string` (ISO-8601)
-  - `updatedAt`: `string` (ISO-8601)
+  - id: Int, autoincremental, clave primaria
+  - title: string, requerido
+  - description: string opcional (null si no hay)
+  - status: enum pending | completed (por defecto pending)
+  - createdAt: DateTime, por defecto al crear
+  - updatedAt: DateTime, actualizado automáticamente por Prisma
+  
+
+
 
 ## 3. Persistencia y Comportamiento Técnico
-- **Almacenamiento:** [Definir: SQLite / archivo JSON / localStorage / API REST].
+- **Almacenamiento:** PostgreSQL (Neon) + Prisma (ORM)
 - **Integridad:** Toda operación de escritura (crear, editar, cambiar estado, eliminar) debe reflejarse en la persistencia antes de confirmar éxito en la UI/respuesta.
 
-## 4. Definción de hecha (Criterios de Terminado)
+## 4. Definición de terminado (Criterios de Terminado)
 - [ ] Todos los criterios de aceptación (`CA-1.1` a `CA-5.2`) cumplen el resultado esperado.
 - [ ] Los datos persisten íntegros tras recargar la página o reiniciar el servidor/proceso.
 - [ ] Existen pruebas automatizadas que validan el flujo completo CRUD y los casos de rechazo por validación.
 - [ ] Sin errores en consola ni advertencias de compilación/tipos.
+- [ ] Desplegado, con enlace funcional.
+- [ ] README con: problema que resuelve, tecnologías, capturas, cómo ejecutarlo y qué aprendí.
+- [ ] Pruebas básicas pasando en CI.
+- [ ] Manejo de errores en los flujos principales.
+- [ ] Historial de Git limpio.
+
+## 5. Endpoints / Acciones
+
+- **Crear tarea** — `POST /api/tareas`
+  - Recibe `title` y `description` (opcional).
+  - Valida el payload, crea la tarea en PostgreSQL vía Prisma y devuelve `201 Created` con el registro creado.
+
+- **Listar / filtrar tareas** — `GET /api/tareas`
+  - `GET /api/tareas`: devuelve todas las tareas.
+  - `GET /api/tareas?status=pending`: devuelve solo pendientes.
+  - `GET /api/tareas?status=completed`: devuelve solo completadas.
+  - Responde `200 OK` con la lista (ordenada de más reciente a más antigua).
+
+- **Editar tarea / cambiar estado** — `PATCH /api/tareas/[id]`
+  - Actualiza parcialmente `title`, `description` y/o `status` (`pending` o `completed`).
+  - Valida los datos (por ejemplo, título no vacío) y devuelve la tarea actualizada.
+
+- **Eliminar tarea** — `DELETE /api/tareas/[id]`
+  - Elimina la tarea indicada por `id`.
+  - Responde `200 OK` o `204 No Content`; si no existe, `404 Not Found`.

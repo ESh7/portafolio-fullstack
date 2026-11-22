@@ -4,12 +4,22 @@ Diario vivo. Se actualiza al cerrar cada sesión (tres líneas bastan). Lo más 
 
 ## Estado actual
 
-- **Fase:** definición cerrada; falta empezar el proyecto 1.
+- **Fase:** proyecto 1 en etapa 3 (entorno), diseño mínimo completado.
 - **Proyecto en curso:** 1, gestor de tareas (CRUD) con Next.js.
-- **Siguiente paso:** escribir la spec de una página del proyecto 1 (problema, 3 a 5 historias de usuario, qué queda fuera del MVP y definición de "terminado") y pedir revisión.
+- **Siguiente paso:** preparar el **entorno** del proyecto 1: repositorio con rama `main` protegida, tablero en GitHub Projects, linter, formateador y variables de entorno (`.env` fuera de Git, `.env.example` sin valores reales).
 - **Tarjetas en curso (máx. 2):** ninguna todavía.
 
 ## Registro de sesiones
+
+### 2026-11-22: diseño mínimo del proyecto 1 completado
+
+- Se completó la etapa 2 del proyecto 1: modelo de datos ajustado a PostgreSQL/Prisma, lista de endpoints definida en `specs/01-gestor-de-tareas.md` y wireframe de baja fidelidad validado contra HU-01 a HU-05.
+- Queda pendiente la confirmación de Neon como base de datos gestionada (decisión aún abierta).
+
+### 2026-11-21: spec del proyecto 1 revisada y elección de ORM
+
+- Se revisó `specs/01-gestor-de-tareas.md`: se alineó la persistencia a PostgreSQL (Neon) + Prisma y se completó la definición de terminado con los criterios del portafolio.
+- Decisión: se eligió **Prisma** como ORM por menor conocimiento técnico de SQL y una API más natural para empezar.
 
 ### 2026-11-20: definición del ciclo y del stack
 
@@ -25,7 +35,6 @@ Decisiones tomadas:
 
 ## Decisiones pendientes
 
-- Elegir ORM: Prisma o Drizzle.
 - Confirmar Neon como base de datos (Supabase queda como alternativa).
 
 ## Lecciones aprendidas
