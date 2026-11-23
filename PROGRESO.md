@@ -4,12 +4,18 @@ Diario vivo. Se actualiza al cerrar cada sesión (tres líneas bastan). Lo más 
 
 ## Estado actual
 
-- **Fase:** proyecto 1 en etapa 3 (entorno), diseño mínimo completado.
+- **Fase:** proyecto 1, etapa 3 (entorno) completada.
 - **Proyecto en curso:** 1, gestor de tareas (CRUD) con Next.js.
-- **Siguiente paso:** preparar el **entorno** del proyecto 1: repositorio con rama `main` protegida, tablero en GitHub Projects, linter, formateador y variables de entorno (`.env` fuera de Git, `.env.example` sin valores reales).
+- **Siguiente paso:** hacer push y PR de `feat/entorno-inicial`, fusionarla a `main` y comenzar la **etapa 4: desarrollo en incrementos** (primera funcionalidad según `specs/01-gestor-de-tareas.md`).
 - **Tarjetas en curso (máx. 2):** ninguna todavía.
 
 ## Registro de sesiones
+
+### 2026-11-23: entorno inicial del proyecto 1 completado
+
+- Se inicializó `proyectos/01-gestor-tareas` con Next.js, TypeScript, Biome (linter/formateador) y `.env.example`.
+- Se hizo público el repositorio, se verificó/configuró la protección de `main` y se dejó listo el tablero de GitHub Projects.
+- Queda pendiente hacer push/PR de `feat/entorno-inicial` y confirmar Neon como base de datos.
 
 ### 2026-11-22: diseño mínimo del proyecto 1 completado
 
