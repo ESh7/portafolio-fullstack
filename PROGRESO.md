@@ -4,12 +4,28 @@ Diario vivo. Se actualiza al cerrar cada sesión (tres líneas bastan). Lo más 
 
 ## Estado actual
 
-- **Fase:** definición cerrada; falta empezar el proyecto 1.
+- **Fase:** proyecto 1, etapa 3 (entorno) completada.
 - **Proyecto en curso:** 1, gestor de tareas (CRUD) con Next.js.
-- **Siguiente paso:** escribir la spec de una página del proyecto 1 (problema, 3 a 5 historias de usuario, qué queda fuera del MVP y definición de "terminado") y pedir revisión.
+- **Siguiente paso:** hacer push y PR de `feat/entorno-inicial`, fusionarla a `main` y comenzar la **etapa 4: desarrollo en incrementos** (primera funcionalidad según `specs/01-gestor-de-tareas.md`).
 - **Tarjetas en curso (máx. 2):** ninguna todavía.
 
 ## Registro de sesiones
+
+### 2026-11-23: entorno inicial del proyecto 1 completado
+
+- Se inicializó `proyectos/01-gestor-tareas` con Next.js, TypeScript, Biome (linter/formateador) y `.env.example`.
+- Se hizo público el repositorio, se verificó/configuró la protección de `main` y se dejó listo el tablero de GitHub Projects.
+- Queda pendiente hacer push/PR de `feat/entorno-inicial` y confirmar Neon como base de datos.
+
+### 2026-11-22: diseño mínimo del proyecto 1 completado
+
+- Se completó la etapa 2 del proyecto 1: modelo de datos ajustado a PostgreSQL/Prisma, lista de endpoints definida en `specs/01-gestor-de-tareas.md` y wireframe de baja fidelidad validado contra HU-01 a HU-05.
+- Queda pendiente la confirmación de Neon como base de datos gestionada (decisión aún abierta).
+
+### 2026-11-21: spec del proyecto 1 revisada y elección de ORM
+
+- Se revisó `specs/01-gestor-de-tareas.md`: se alineó la persistencia a PostgreSQL (Neon) + Prisma y se completó la definición de terminado con los criterios del portafolio.
+- Decisión: se eligió **Prisma** como ORM por menor conocimiento técnico de SQL y una API más natural para empezar.
 
 ### 2026-11-20: definición del ciclo y del stack
 
@@ -21,10 +37,10 @@ Decisiones tomadas:
 - Base de datos: PostgreSQL para todos, por la vinculación interna de los datos y la escalabilidad.
 - Se trabajará de forma compartida entre varias herramientas de IA (chat de Claude, Gemini y opencode; Claude Code solo si hay plan de pago), usando estos archivos como contexto común.
 - **Todo gratuito:** ninguna herramienta ni servicio de pago. Base de datos en Neon Free; despliegue en Vercel Hobby y Render Free; Railway queda fuera del plan.
+- Monorepo: el repositorio es el portafolio y cada proyecto vive en proyecto/NN-nombre
 
 ## Decisiones pendientes
 
-- Elegir ORM: Prisma o Drizzle.
 - Confirmar Neon como base de datos (Supabase queda como alternativa).
 
 ## Lecciones aprendidas
