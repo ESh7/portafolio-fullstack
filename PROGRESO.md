@@ -6,10 +6,15 @@ Diario vivo. Se actualiza al cerrar cada sesión (tres líneas bastan). Lo más 
 
 - **Fase:** proyecto 1, etapa 4 (desarrollo en incrementos) en curso.
 - **Proyecto en curso:** 1, gestor de tareas (CRUD) con Next.js.
-- **Siguiente paso:** implementar el incremento HU-01 (crear tarea) como corte vertical mínimo: `POST/GET /api/tareas` + formulario y lista básica para verificar CA-1.1 y CA-1.2.
-- **Tarjetas en curso (máx. 2):** 1 (HU-01 crear tarea).
+- **Siguiente paso:** elegir e implementar el siguiente incremento (HU-02 filtros/estado vacío completo, HU-03 editar, HU-04 cambiar estado o HU-05 eliminar).
+- **Tarjetas en curso (máx. 2):** ninguna todavía.
 
 ## Registro de sesiones
+
+### 2026-11-24: HU-01 crear tarea completada (corte vertical)
+
+- Se implementó `POST/GET /api/tareas` y una UI mínima con formulario y lista básica.
+- Se verificaron CA-1.1 y CA-1.2 en navegador; PR #3 fusionado.
 
 ### 2026-11-24: base de datos y Prisma configurados
 
