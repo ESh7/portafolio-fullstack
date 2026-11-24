@@ -4,12 +4,18 @@ Diario vivo. Se actualiza al cerrar cada sesión (tres líneas bastan). Lo más 
 
 ## Estado actual
 
-- **Fase:** proyecto 1, etapa 3 (entorno) completada.
+- **Fase:** proyecto 1, etapa 4 (desarrollo en incrementos) en curso.
 - **Proyecto en curso:** 1, gestor de tareas (CRUD) con Next.js.
-- **Siguiente paso:** hacer push y PR de `feat/entorno-inicial`, fusionarla a `main` y comenzar la **etapa 4: desarrollo en incrementos** (primera funcionalidad según `specs/01-gestor-de-tareas.md`).
-- **Tarjetas en curso (máx. 2):** ninguna todavía.
+- **Siguiente paso:** implementar el incremento HU-01 (crear tarea) como corte vertical mínimo: `POST/GET /api/tareas` + formulario y lista básica para verificar CA-1.1 y CA-1.2.
+- **Tarjetas en curso (máx. 2):** 1 (HU-01 crear tarea).
 
 ## Registro de sesiones
+
+### 2026-11-24: base de datos y Prisma configurados
+
+- Se configuró Prisma 7 con PostgreSQL (Neon), se definió el modelo `Tarea` según la spec y se aplicó la migración inicial `init_tarea`.
+- Se verificó la conexión de extremo a extremo contra Neon (crear, leer y eliminar una tarea de prueba).
+- PR de configuración de base de datos fusionado.
 
 ### 2026-11-23: entorno inicial del proyecto 1 completado
 
