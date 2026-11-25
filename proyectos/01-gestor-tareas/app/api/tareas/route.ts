@@ -108,11 +108,22 @@ export async function POST(request: NextRequest) {
 		);
 	}
 }
-export async function GET() {
+export async function GET(request: NextRequest) {
+	const status = request.nextUrl.searchParams.get("status");
+	// 1) Si status viene y NO es "pending" ni "completed", responde 400
+	if (status && status !== "pending" && status !== "completed") {
+		return NextResponse.json(
+			{ error: "El parámetro 'status' debe ser 'pending' o 'completed'." },
+			{ status: 400 },
+		);
+	}
+
 	try {
 		const tareas = await prisma.tarea.findMany({
-			orderBy: {
-				createdAt: "desc",
+			orderBy: { createdAt: "desc" },
+			where: {
+				status:
+					status === "pending" || status === "completed" ? status : undefined,
 			},
 		});
 

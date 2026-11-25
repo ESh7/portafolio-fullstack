@@ -1,8 +1,9 @@
 "use client";
 
-import { type FormEvent, useEffect, useState } from "react";
+import { type FormEvent, useCallback, useEffect, useState } from "react";
 
 type TaskStatus = "pending" | "completed";
+type TaskFilter = "all" | "pending" | "completed";
 
 interface Tarea {
 	id: number;
@@ -19,25 +20,29 @@ export default function HomePage() {
 	const [error, setError] = useState<string | null>(null);
 	const [isSubmitting, setIsSubmitting] = useState(false);
 	const [tasks, setTasks] = useState<Tarea[]>([]);
+	const [filter, setFilter] = useState<TaskFilter>("all");
+	const loadTasks = useCallback(async (currentFilter: TaskFilter) => {
+		const url =
+			currentFilter === "all"
+				? "/api/tareas"
+				: `/api/tareas?status=${currentFilter}`;
+		try {
+			const response = await fetch(url);
+			if (!response.ok) {
+				throw new Error("No se pudieron cargar las tareas.");
+			}
+
+			const data: Tarea[] = await response.json();
+			setTasks(data);
+		} catch (loadError) {
+			console.error(loadError);
+			setError("No se pudieron cargar las tareas.");
+		}
+	}, []);
 
 	useEffect(() => {
-		async function loadTasks() {
-			try {
-				const response = await fetch("/api/tareas");
-				if (!response.ok) {
-					throw new Error("No se pudieron cargar las tareas.");
-				}
-
-				const data: Tarea[] = await response.json();
-				setTasks(data);
-			} catch (loadError) {
-				console.error(loadError);
-				setError("No se pudieron cargar las tareas.");
-			}
-		}
-
-		void loadTasks();
-	}, []);
+		void loadTasks(filter);
+	}, [filter, loadTasks]);
 
 	async function handleSubmit(event: FormEvent<HTMLFormElement>) {
 		event.preventDefault();
@@ -60,7 +65,7 @@ export default function HomePage() {
 				return;
 			}
 
-			setTasks((currentTasks) => [data as Tarea, ...currentTasks]);
+			await loadTasks(filter);
 			setTitle("");
 			setDescription("");
 		} catch (submitError) {
@@ -102,11 +107,38 @@ export default function HomePage() {
 					</button>
 				</form>
 			</section>
+			<div className="flex gap-6">
+				<button
+					type="button"
+					onClick={() => setFilter("all")}
+					disabled={filter === "all"}
+				>
+					Todas
+				</button>
+				<button
+					type="button"
+					onClick={() => setFilter("pending")}
+					disabled={filter === "pending"}
+				>
+					Pendientes
+				</button>
+				<button
+					type="button"
+					onClick={() => setFilter("completed")}
+					disabled={filter === "completed"}
+				>
+					Completadas
+				</button>
+			</div>
 
 			<section>
 				<h2>Mis tareas</h2>
 				{tasks.length === 0 ? (
-					<p>No hay tareas todavía.</p>
+					<p>
+						{filter === "all"
+							? "No hay tareas todavía."
+							: "No hay tareas para este filtro."}
+					</p>
 				) : (
 					<ul>
 						{tasks.map((task) => (
