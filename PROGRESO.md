@@ -6,10 +6,15 @@ Diario vivo. Se actualiza al cerrar cada sesión (tres líneas bastan). Lo más 
 
 - **Fase:** proyecto 1, etapa 4 (desarrollo en incrementos) en curso.
 - **Proyecto en curso:** 1, gestor de tareas (CRUD) con Next.js.
-- **Siguiente paso:** elegir e implementar el siguiente incremento (HU-02 filtros/estado vacío completo, HU-03 editar, HU-04 cambiar estado o HU-05 eliminar).
+- **Siguiente paso:** elegir e implementar el siguiente incremento (HU-03 editar, HU-04 cambiar estado o HU-05 eliminar).
 - **Tarjetas en curso (máx. 2):** ninguna todavía.
 
 ## Registro de sesiones
+
+### 2026-11-25: HU-02 listar/filtrar completada
+
+- Se agregó filtro por `status` en `GET /api/tareas` y controles Todas/Pendientes/Completadas en la UI.
+- Se verificaron CA-2.1, CA-2.2 y CA-2.3; PR #5 fusionado.
 
 ### 2026-11-24: HU-01 crear tarea completada (corte vertical)
 
