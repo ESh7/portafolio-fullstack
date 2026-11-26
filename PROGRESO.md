@@ -4,12 +4,17 @@ Diario vivo. Se actualiza al cerrar cada sesión (tres líneas bastan). Lo más 
 
 ## Estado actual
 
-- **Fase:** proyecto 1, HU-01 a HU-05 completas; pruebas y CI listos; falta cerrar DoD.
+- **Fase:** proyecto 1, HU-01 a HU-05 completas; pruebas, CI y README base listos; falta cerrar DoD.
 - **Proyecto en curso:** 1, gestor de tareas (CRUD) con Next.js.
-- **Siguiente paso:** atacar la DoD restante: manejo de errores, despliegue en Vercel y README.
+- **Siguiente paso:** desplegar en Vercel, completar capturas/“Qué aprendí” del README y decidir si cerrar hallazgos bajos de manejo de errores.
 - **Tarjetas en curso (máx. 2):** ninguna todavía.
 
 ## Registro de sesiones
+
+### 2026-11-26: manejo de errores mejorado y README base
+
+- Se corrigieron hallazgos medios de manejo de errores en la UI: error global visible, recarga consistente y limpieza de formulario solo tras recarga exitosa.
+- Se agregó README base del Proyecto 1 con placeholders para capturas y “Qué aprendí”. PR #17 fusionado.
 
 ### 2026-11-26: CI en GitHub Actions configurado
 
