@@ -4,12 +4,17 @@ Diario vivo. Se actualiza al cerrar cada sesión (tres líneas bastan). Lo más 
 
 ## Estado actual
 
-- **Fase:** proyecto 1, HU-01 a HU-05 completas; pruebas, CI y README base listos; falta cerrar DoD.
+- **Fase:** proyecto 1, HU-01 a HU-05 completas; pruebas, CI, README base y manejo de errores listos; falta cerrar DoD.
 - **Proyecto en curso:** 1, gestor de tareas (CRUD) con Next.js.
-- **Siguiente paso:** desplegar en Vercel, completar capturas/“Qué aprendí” del README y decidir si cerrar hallazgos bajos de manejo de errores.
+- **Siguiente paso:** desplegar en Vercel y completar capturas/“Qué aprendí” del README.
 - **Tarjetas en curso (máx. 2):** ninguna todavía.
 
 ## Registro de sesiones
+
+### 2026-11-26: hallazgos bajos de manejo de errores cerrados
+
+- Se agregaron `error.tsx` y `global-error.tsx`, y parseo defensivo de JSON en la UI para respuestas de error no válidas.
+- PR #19 fusionado.
 
 ### 2026-11-26: manejo de errores mejorado y README base
 
