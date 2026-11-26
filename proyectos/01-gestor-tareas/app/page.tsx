@@ -97,6 +97,42 @@ export default function HomePage() {
 		}
 	}
 
+	async function handleToggleStatus(task: Tarea) {
+		setError(null);
+		const nextStatus: TaskStatus =
+			task.status === "pending" ? "completed" : "pending";
+
+		try {
+			const response = await fetch(`/api/tareas/${task.id}`, {
+				method: "PATCH",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify({ status: nextStatus }),
+			});
+
+			if (!response.ok) {
+				const data = await response.json();
+				setError(data.error ?? "No se pudo actualizar la tarea.");
+				return;
+			}
+
+			const updatedTask: Tarea = await response.json();
+			setTasks((currentTasks) =>
+				currentTasks
+					.map((currentTask) =>
+						currentTask.id === task.id ? updatedTask : currentTask,
+					)
+					.filter(
+						(currentTask) => filter === "all" || currentTask.status === filter,
+					),
+			);
+		} catch (toggleError) {
+			console.error(toggleError);
+			setError("No se pudo actualizar la tarea.");
+		}
+	}
+
 	return (
 		<main>
 			<h1>Gestor de Tareas</h1>
@@ -164,6 +200,12 @@ export default function HomePage() {
 					<ul>
 						{tasks.map((task) => (
 							<li key={task.id}>
+								<input
+									type="checkbox"
+									checked={task.status === "completed"}
+									onChange={() => handleToggleStatus(task)}
+									aria-label={`Marcar "${task.title}" como ${task.status === "pending" ? "completada" : "pendiente"}`}
+								/>
 								<strong>{task.title}</strong> — {task.status}
 								<button type="button" onClick={() => handleDelete(task.id)}>
 									Eliminar
