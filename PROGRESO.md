@@ -11,6 +11,18 @@ Diario vivo. Se actualiza al cerrar cada sesión (tres líneas bastan). Lo más 
 
 ## Registro de sesiones
 
+### 2026-11-26: pulido UI Bloques 1 y 2 en Proyecto 1 (rama feat/ui-polish-bloques-1-2)
+
+- Se aplicó la mini-spec de pulido UI en `proyectos/01-gestor-tareas`: `lang="es"`, metadata del producto y tipografía Geist consistente; contenedor/espaciado para evitar solapamiento con el toggle; estilos unificados en formulario, filtros, lista, alerta y vacío.
+- Se agregó estado de carga inicial (“Cargando tareas...”), estado en español (“Pendiente/Completada”), descripción debajo del título, botón “Eliminar” destructivo, `focus-visible`, filtros con `aria-pressed` y corrección del flicker del icono en `ThemeToggle`.
+- Verificación: `pnpm exec biome check --write .`, `pnpm test` (13/13) y `pnpm build` en verde. Sin commit ni push. Pendiente: revisión humana/visual y PR.
+
+### 2026-11-26: botón de tema claro/oscuro en Proyecto 1 (rama feat/theme-toggle)
+
+- Se agregó `ThemeToggle` (cliente) en `app/layout.tsx`, con script inline para aplicar el tema antes del render, persistencia en `localStorage` y `@custom-variant dark` en `app/globals.css` (se eliminó `prefers-color-scheme`).
+- Verificación: `pnpm exec biome check --write .` y `pnpm test` (13/13) en verde. Sin commit ni push.
+- Pendiente: revisión humana, PR y validación visual en navegador. Duda: confirmar si el icono de bombillo (relleno en oscuro, contorno en claro) y la posición fija superior derecha cumplen la expectativa visual.
+
 ### 2026-11-26: hallazgos bajos de manejo de errores cerrados
 
 - Se agregaron `error.tsx` y `global-error.tsx`, y parseo defensivo de JSON en la UI para respuestas de error no válidas.
