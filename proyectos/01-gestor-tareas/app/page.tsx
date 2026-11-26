@@ -14,6 +14,27 @@ interface Tarea {
 	updatedAt: string;
 }
 
+async function getResponseError(
+	response: Response,
+	fallback: string,
+): Promise<string> {
+	try {
+		const data: unknown = await response.json();
+		if (
+			typeof data === "object" &&
+			data !== null &&
+			"error" in data &&
+			typeof data.error === "string"
+		) {
+			return data.error;
+		}
+	} catch {
+		// Si la respuesta no es JSON válido, usamos el mensaje de respaldo.
+	}
+
+	return fallback;
+}
+
 export default function HomePage() {
 	const [title, setTitle] = useState("");
 	const [description, setDescription] = useState("");
@@ -65,10 +86,10 @@ export default function HomePage() {
 				body: JSON.stringify({ title, description }),
 			});
 
-			const data = await response.json();
-
 			if (!response.ok) {
-				setError(data.error ?? "No se pudo crear la tarea.");
+				setError(
+					await getResponseError(response, "No se pudo crear la tarea."),
+				);
 				return;
 			}
 
@@ -94,8 +115,9 @@ export default function HomePage() {
 			});
 
 			if (!response.ok) {
-				const data = await response.json();
-				setError(data.error ?? "No se pudo eliminar la tarea.");
+				setError(
+					await getResponseError(response, "No se pudo eliminar la tarea."),
+				);
 				return;
 			}
 
@@ -121,8 +143,9 @@ export default function HomePage() {
 			});
 
 			if (!response.ok) {
-				const data = await response.json();
-				setError(data.error ?? "No se pudo actualizar la tarea.");
+				setError(
+					await getResponseError(response, "No se pudo actualizar la tarea."),
+				);
 				return;
 			}
 
@@ -171,14 +194,14 @@ export default function HomePage() {
 				}),
 			});
 
-			const data = await response.json();
-
 			if (!response.ok) {
-				setError(data.error ?? "No se pudo actualizar la tarea.");
+				setError(
+					await getResponseError(response, "No se pudo actualizar la tarea."),
+				);
 				return;
 			}
 
-			const updatedTask: Tarea = data;
+			const updatedTask: Tarea = await response.json();
 			setTasks((currentTasks) =>
 				currentTasks.map((currentTask) =>
 					currentTask.id === id ? updatedTask : currentTask,
