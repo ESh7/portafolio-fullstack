@@ -4,12 +4,17 @@ Diario vivo. Se actualiza al cerrar cada sesión (tres líneas bastan). Lo más 
 
 ## Estado actual
 
-- **Fase:** proyecto 1, etapa 4 (desarrollo en incrementos) en curso.
+- **Fase:** proyecto 1, funcionalidad HU-01 a HU-05 completada; falta cerrar definición de terminado.
 - **Proyecto en curso:** 1, gestor de tareas (CRUD) con Next.js.
-- **Siguiente paso:** implementar HU-03 (editar título/descripción), último incremento funcional pendiente de la spec.
+- **Siguiente paso:** atacar la DoD: pruebas automatizadas + CI, manejo de errores, despliegue en Vercel y README.
 - **Tarjetas en curso (máx. 2):** ninguna todavía.
 
 ## Registro de sesiones
+
+### 2026-11-26: HU-03 editar tarea completada
+
+- Se extendió `PATCH /api/tareas/[id]` para `title`/`description` y se agregó edición inline en la UI.
+- Se verificaron CA-3.1 y CA-3.2; PR #11 fusionado. HU-01 a HU-05 completas.
 
 ### 2026-11-26: HU-04 cambiar estado completada
 
