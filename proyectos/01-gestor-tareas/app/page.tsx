@@ -21,6 +21,9 @@ export default function HomePage() {
 	const [isSubmitting, setIsSubmitting] = useState(false);
 	const [tasks, setTasks] = useState<Tarea[]>([]);
 	const [filter, setFilter] = useState<TaskFilter>("all");
+	const [editingId, setEditingId] = useState<number | null>(null);
+	const [editTitle, setEditTitle] = useState("");
+	const [editDescription, setEditDescription] = useState("");
 	const loadTasks = useCallback(async (currentFilter: TaskFilter) => {
 		const url =
 			currentFilter === "all"
@@ -133,6 +136,57 @@ export default function HomePage() {
 		}
 	}
 
+	function handleEditStart(task: Tarea) {
+		setError(null);
+		setEditingId(task.id);
+		setEditTitle(task.title);
+		setEditDescription(task.description ?? "");
+	}
+
+	function handleEditCancel() {
+		setEditingId(null);
+		setEditTitle("");
+		setEditDescription("");
+		setError(null);
+	}
+
+	async function handleEditSave(id: number) {
+		setError(null);
+
+		try {
+			const response = await fetch(`/api/tareas/${id}`, {
+				method: "PATCH",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify({
+					title: editTitle,
+					description: editDescription,
+				}),
+			});
+
+			const data = await response.json();
+
+			if (!response.ok) {
+				setError(data.error ?? "No se pudo actualizar la tarea.");
+				return;
+			}
+
+			const updatedTask: Tarea = data;
+			setTasks((currentTasks) =>
+				currentTasks.map((currentTask) =>
+					currentTask.id === id ? updatedTask : currentTask,
+				),
+			);
+			setEditingId(null);
+			setEditTitle("");
+			setEditDescription("");
+		} catch (editError) {
+			console.error(editError);
+			setError("No se pudo actualizar la tarea.");
+		}
+	}
+
 	return (
 		<main>
 			<h1>Gestor de Tareas</h1>
@@ -145,6 +199,7 @@ export default function HomePage() {
 						id="title"
 						name="title"
 						type="text"
+						className="border bg-background text-foreground p-1"
 						value={title}
 						onChange={(event) => setTitle(event.target.value)}
 					/>
@@ -153,6 +208,7 @@ export default function HomePage() {
 					<textarea
 						id="description"
 						name="description"
+						className="border bg-background text-foreground p-1"
 						value={description}
 						onChange={(event) => setDescription(event.target.value)}
 					/>
@@ -206,10 +262,51 @@ export default function HomePage() {
 									onChange={() => handleToggleStatus(task)}
 									aria-label={`Marcar "${task.title}" como ${task.status === "pending" ? "completada" : "pendiente"}`}
 								/>
-								<strong>{task.title}</strong> — {task.status}
-								<button type="button" onClick={() => handleDelete(task.id)}>
-									Eliminar
-								</button>
+
+								{editingId === task.id ? (
+									<div>
+										<label htmlFor={`edit-title-${task.id}`}>Título</label>
+										<input
+											id={`edit-title-${task.id}`}
+											type="text"
+											className="border bg-background text-foreground p-1"
+											value={editTitle}
+											onChange={(event) => setEditTitle(event.target.value)}
+										/>
+
+										<label htmlFor={`edit-description-${task.id}`}>
+											Descripción
+										</label>
+										<textarea
+											id={`edit-description-${task.id}`}
+											className="border bg-background text-foreground p-1"
+											value={editDescription}
+											onChange={(event) =>
+												setEditDescription(event.target.value)
+											}
+										/>
+
+										<button
+											type="button"
+											onClick={() => handleEditSave(task.id)}
+										>
+											Guardar
+										</button>
+										<button type="button" onClick={handleEditCancel}>
+											Cancelar
+										</button>
+									</div>
+								) : (
+									<>
+										<strong>{task.title}</strong> — {task.status}
+										<button type="button" onClick={() => handleEditStart(task)}>
+											Editar
+										</button>
+										<button type="button" onClick={() => handleDelete(task.id)}>
+											Eliminar
+										</button>
+									</>
+								)}
 							</li>
 						))}
 					</ul>
