@@ -8,7 +8,8 @@
 		"start": "next start",
 		"lint": "biome lint",
 		"format": "biome format --write .",
-		"check": "biome check --write ."
+		"check": "biome check --write .",
+		"test": "vitest run"
 	},
 	"dependencies": {
 		"@prisma/adapter-pg": "^7.10.1",
@@ -28,7 +29,8 @@
 		"dotenv": "^18.0.10",
 		"prisma": "^7.10.1",
 		"tailwindcss": "4.3.3",
-		"typescript": "^5"
+		"typescript": "^5",
+		"vitest": "^5.1.2"
 	},
 	"packageManager": "pnpm@12.23.0"
 }
