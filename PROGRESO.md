@@ -6,10 +6,15 @@ Diario vivo. Se actualiza al cerrar cada sesión (tres líneas bastan). Lo más 
 
 - **Fase:** proyecto 1, etapa 4 (desarrollo en incrementos) en curso.
 - **Proyecto en curso:** 1, gestor de tareas (CRUD) con Next.js.
-- **Siguiente paso:** elegir e implementar el siguiente incremento (HU-03 editar o HU-04 cambiar estado).
+- **Siguiente paso:** implementar HU-03 (editar título/descripción), último incremento funcional pendiente de la spec.
 - **Tarjetas en curso (máx. 2):** ninguna todavía.
 
 ## Registro de sesiones
+
+### 2026-11-26: HU-04 cambiar estado completada
+
+- Se implementó soporte de `status` en `PATCH /api/tareas/[id]` y toggle en la UI.
+- Se verificaron CA-4.1 y CA-4.2; PR #9 fusionado.
 
 ### 2026-11-26: HU-05 eliminar tarea completada
 
