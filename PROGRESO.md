@@ -4,12 +4,17 @@ Diario vivo. Se actualiza al cerrar cada sesión (tres líneas bastan). Lo más 
 
 ## Estado actual
 
-- **Fase:** proyecto 1, HU-01 a HU-05 completas; pruebas base agregadas; falta cerrar DoD.
+- **Fase:** proyecto 1, HU-01 a HU-05 completas; pruebas y CI listos; falta cerrar DoD.
 - **Proyecto en curso:** 1, gestor de tareas (CRUD) con Next.js.
-- **Siguiente paso:** atacar la DoD restante: CI en GitHub Actions, manejo de errores, despliegue en Vercel y README.
+- **Siguiente paso:** atacar la DoD restante: manejo de errores, despliegue en Vercel y README.
 - **Tarjetas en curso (máx. 2):** ninguna todavía.
 
 ## Registro de sesiones
+
+### 2026-11-26: CI en GitHub Actions configurado
+
+- Se agregó workflow `.github/workflows/ci.yml` para instalar, generar Prisma, correr Biome, tests y build en PR/push a `main`.
+- PR #15 fusionado con checks en verde.
 
 ### 2026-11-26: pruebas automatizadas base agregadas
 
