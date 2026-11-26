@@ -37,9 +37,13 @@ export default function HomePage() {
 
 			const data: Tarea[] = await response.json();
 			setTasks(data);
+			setError(null);
+			return true;
 		} catch (loadError) {
 			console.error(loadError);
+			setTasks([]);
 			setError("No se pudieron cargar las tareas.");
+			return false;
 		}
 	}, []);
 
@@ -68,9 +72,11 @@ export default function HomePage() {
 				return;
 			}
 
-			await loadTasks(filter);
-			setTitle("");
-			setDescription("");
+			const reloaded = await loadTasks(filter);
+			if (reloaded) {
+				setTitle("");
+				setDescription("");
+			}
 		} catch (submitError) {
 			console.error(submitError);
 			setError("No se pudo crear la tarea.");
@@ -190,6 +196,7 @@ export default function HomePage() {
 	return (
 		<main>
 			<h1>Gestor de Tareas</h1>
+			{error ? <p role="alert">{error}</p> : null}
 
 			<section>
 				<h2>Nueva tarea</h2>
@@ -212,8 +219,6 @@ export default function HomePage() {
 						value={description}
 						onChange={(event) => setDescription(event.target.value)}
 					/>
-
-					{error ? <p role="alert">{error}</p> : null}
 
 					<button type="submit" disabled={isSubmitting}>
 						{isSubmitting ? "Creando..." : "Crear tarea"}
