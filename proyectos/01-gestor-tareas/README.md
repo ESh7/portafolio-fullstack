@@ -59,7 +59,6 @@ Variables definidas en `.env.example`:
 
 - `DATABASE_URL`: cadena de conexión para el cliente/adapter de PostgreSQL.
 - `DIRECT_URL`: conexión directa usada por Prisma para migraciones.
-- `NEXT_PUBLIC_APP_URL`: URL pública local de la app (por defecto `http://localhost:3000`).
 
 > No compartas ni subas valores reales de `.env` al repositorio.
 
