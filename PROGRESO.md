@@ -6,10 +6,15 @@ Diario vivo. Se actualiza al cerrar cada sesión (tres líneas bastan). Lo más 
 
 - **Fase:** proyecto 1, etapa 4 (desarrollo en incrementos) en curso.
 - **Proyecto en curso:** 1, gestor de tareas (CRUD) con Next.js.
-- **Siguiente paso:** elegir e implementar el siguiente incremento (HU-03 editar, HU-04 cambiar estado o HU-05 eliminar).
+- **Siguiente paso:** elegir e implementar el siguiente incremento (HU-03 editar o HU-04 cambiar estado).
 - **Tarjetas en curso (máx. 2):** ninguna todavía.
 
 ## Registro de sesiones
+
+### 2026-11-26: HU-05 eliminar tarea completada
+
+- Se implementó `DELETE /api/tareas/[id]` y botón Eliminar en la UI.
+- Se verificaron CA-5.1 y CA-5.2; PR #7 fusionado.
 
 ### 2026-11-25: HU-02 listar/filtrar completada
 
