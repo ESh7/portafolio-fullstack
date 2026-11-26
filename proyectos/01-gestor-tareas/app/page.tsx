@@ -76,6 +76,27 @@ export default function HomePage() {
 		}
 	}
 
+	async function handleDelete(id: number) {
+		setError(null);
+
+		try {
+			const response = await fetch(`/api/tareas/${id}`, {
+				method: "DELETE",
+			});
+
+			if (!response.ok) {
+				const data = await response.json();
+				setError(data.error ?? "No se pudo eliminar la tarea.");
+				return;
+			}
+
+			setTasks((currentTasks) => currentTasks.filter((task) => task.id !== id));
+		} catch (deleteError) {
+			console.error(deleteError);
+			setError("No se pudo eliminar la tarea.");
+		}
+	}
+
 	return (
 		<main>
 			<h1>Gestor de Tareas</h1>
@@ -144,6 +165,9 @@ export default function HomePage() {
 						{tasks.map((task) => (
 							<li key={task.id}>
 								<strong>{task.title}</strong> — {task.status}
+								<button type="button" onClick={() => handleDelete(task.id)}>
+									Eliminar
+								</button>
 							</li>
 						))}
 					</ul>
