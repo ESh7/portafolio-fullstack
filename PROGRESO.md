@@ -11,6 +11,12 @@ Diario vivo. Se actualiza al cerrar cada sesión (tres líneas bastan). Lo más 
 
 ## Registro de sesiones
 
+### 2026-11-26: botón de tema claro/oscuro en Proyecto 1 (rama feat/theme-toggle)
+
+- Se agregó `ThemeToggle` (cliente) en `app/layout.tsx`, con script inline para aplicar el tema antes del render, persistencia en `localStorage` y `@custom-variant dark` en `app/globals.css` (se eliminó `prefers-color-scheme`).
+- Verificación: `pnpm exec biome check --write .` y `pnpm test` (13/13) en verde. Sin commit ni push.
+- Pendiente: revisión humana, PR y validación visual en navegador. Duda: confirmar si el icono de bombillo (relleno en oscuro, contorno en claro) y la posición fija superior derecha cumplen la expectativa visual.
+
 ### 2026-11-26: hallazgos bajos de manejo de errores cerrados
 
 - Se agregaron `error.tsx` y `global-error.tsx`, y parseo defensivo de JSON en la UI para respuestas de error no válidas.
