@@ -1,5 +1,5 @@
-import { beforeEach, describe, expect, it, vi } from "vitest";
 import { NextRequest } from "next/server";
+import { beforeEach, describe, expect, it, vi } from "vitest";
 
 const { createMock, findManyMock } = vi.hoisted(() => ({
 	createMock: vi.fn(),
@@ -86,7 +86,9 @@ describe("GET /api/tareas", () => {
 
 	it("filtra por status pending (CA-2.2)", async () => {
 		findManyMock.mockResolvedValue([]);
-		const request = new NextRequest("http://localhost/api/tareas?status=pending");
+		const request = new NextRequest(
+			"http://localhost/api/tareas?status=pending",
+		);
 		const response = await GET(request);
 		expect(response.status).toBe(200);
 		expect(findManyMock).toHaveBeenCalledWith({
