@@ -4,12 +4,17 @@ Diario vivo. Se actualiza al cerrar cada sesión (tres líneas bastan). Lo más 
 
 ## Estado actual
 
-- **Fase:** proyecto 1, HU-01 a HU-05 completas; pruebas, CI, README base y manejo de errores listos; falta cerrar DoD.
+- **Fase:** proyecto 1, HU-01 a HU-05 completas; pruebas, CI, manejo de errores y despliegue en Vercel listos; falta cerrar DoD.
 - **Proyecto en curso:** 1, gestor de tareas (CRUD) con Next.js.
-- **Siguiente paso:** desplegar en Vercel y completar capturas/“Qué aprendí” del README.
+- **Siguiente paso:** completar capturas reales y la sección “Qué aprendí” en el README del proyecto.
 - **Tarjetas en curso (máx. 2):** ninguna todavía.
 
 ## Registro de sesiones
+
+### 2026-11-26: despliegue en Vercel y limpieza de entorno
+
+- Se desplegó el Proyecto 1 en Vercel (`https://portafolio-fullstack-nine.vercel.app/`) con API conectada a Neon.
+- Se eliminó `NEXT_PUBLIC_APP_URL` no utilizada y se ajustó CI para incluir env vars en `pnpm install` por el `postinstall` de Prisma. PRs #21 y #24 fusionados.
 
 ### 2026-11-26: pulido UI Bloques 1 y 2 en Proyecto 1 (rama feat/ui-polish-bloques-1-2)
 
