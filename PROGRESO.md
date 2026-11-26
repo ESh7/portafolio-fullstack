@@ -4,12 +4,17 @@ Diario vivo. Se actualiza al cerrar cada sesión (tres líneas bastan). Lo más 
 
 ## Estado actual
 
-- **Fase:** proyecto 1, funcionalidad HU-01 a HU-05 completada; falta cerrar definición de terminado.
+- **Fase:** proyecto 1, HU-01 a HU-05 completas; pruebas base agregadas; falta cerrar DoD.
 - **Proyecto en curso:** 1, gestor de tareas (CRUD) con Next.js.
-- **Siguiente paso:** atacar la DoD: pruebas automatizadas + CI, manejo de errores, despliegue en Vercel y README.
+- **Siguiente paso:** atacar la DoD restante: CI en GitHub Actions, manejo de errores, despliegue en Vercel y README.
 - **Tarjetas en curso (máx. 2):** ninguna todavía.
 
 ## Registro de sesiones
+
+### 2026-11-26: pruebas automatizadas base agregadas
+
+- Se configuró Vitest y se agregaron 13 pruebas de API cubriendo CRUD y validaciones clave (CA-1.1, CA-2.2, CA-3.1, CA-4.1, CA-4.2 y rechazos básicos).
+- Quedan gaps conocidos: más casos 400 y pruebas de integración real con BD. PR #13 fusionado.
 
 ### 2026-11-26: HU-03 editar tarea completada
 
