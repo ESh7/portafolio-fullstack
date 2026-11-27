@@ -30,14 +30,7 @@ El MVP cubre las historias de usuario definidas en [`specs/01-gestor-de-tareas.m
 
 ## Capturas
 
-> Agrega aquí capturas reales de la aplicación antes de dar el proyecto por terminado. Guarda las imágenes en una carpeta del proyecto (por ejemplo, `docs/capturas/`) y actualiza las rutas.
-
-- **Vista principal / listado de tareas:**  
-  `![Listado de tareas](docs/capturas/listado.png)`
-- **Crear o editar tarea:**  
-  `![Formulario de tarea](docs/capturas/formulario.png)`
-- **Filtro por estado / estado vacío:**  
-  `![Filtro de tareas](docs/capturas/filtros.png)`
+![Vista principal del gestor de tareas](docs/capturas/gestor-tareas.png)
 
 ## Cómo ejecutarlo localmente
 
@@ -110,9 +103,4 @@ La integración continua del portafolio se plantea con GitHub Actions. Si agrega
 
 ## Qué aprendí
 
-> Completa esta sección con tus propias palabras. El objetivo es explicar qué entendiste, no solo qué hiciste.
-
-- **Qué fue lo más desafiante:** <!-- Ejemplo: configurar Prisma con PostgreSQL/Neon, manejar validaciones, etc. -->
-- **Qué concepto técnico entendí mejor:** <!-- Ejemplo: rutas API en Next.js, validación, persistencia, estados en React, etc. -->
-- **Qué mejoraría en una siguiente iteración:** <!-- Ejemplo: mejor UI, manejo de errores más visible, más pruebas, despliegue, etc. -->
-- **Qué aprendí sobre mi proceso de trabajo:** <!-- Ejemplo: planear antes de codificar, commits pequeños, leer errores, pedir ayuda, etc. -->
+Aprendí la estructura de un proyecto y el flujo de trabajo completo: desde la idea o historia de usuario hasta el despliegue de la app. También practiqué el uso de tecnologías como GitHub, Vercel y Prisma, y entendí mejor las posibilidades de los servicios serverless como Neon. Además, confirmé la utilidad y solidez de la terminal en todo el desarrollo de una app con API y endpoints.
