@@ -4,12 +4,17 @@ Diario vivo. Se actualiza al cerrar cada sesión (tres líneas bastan). Lo más 
 
 ## Estado actual
 
-- **Fase:** proyecto 1, HU-01 a HU-05 completas; pruebas, CI, manejo de errores y despliegue en Vercel listos; falta cerrar DoD.
-- **Proyecto en curso:** 1, gestor de tareas (CRUD) con Next.js.
-- **Siguiente paso:** completar capturas reales y la sección “Qué aprendí” en el README del proyecto.
+- **Fase:** Proyecto 1 completado (DoD cumplida).
+- **Proyecto en curso:** ninguno; listo para iniciar Proyecto 2.
+- **Siguiente paso:** elegir y preparar la spec del Proyecto 2.
 - **Tarjetas en curso (máx. 2):** ninguna todavía.
 
 ## Registro de sesiones
+
+### 2026-11-26: Proyecto 1 cerrado (DoD completa)
+
+- Se completó el README con captura real y sección “Qué aprendí”; se robusteció el build con `prisma generate && next build`. PRs #26 y #27 fusionados.
+- Proyecto 1 (Gestor de tareas CRUD) cumple la DoD: HU-01 a HU-05, pruebas, CI, manejo de errores, despliegue en Vercel y README.
 
 ### 2026-11-26: despliegue en Vercel y limpieza de entorno
 
